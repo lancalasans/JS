@@ -1,24 +1,63 @@
-// Console
-
-// console.log('Black text');
-//console.war('Yellow text with alert');
-//console.error('red error text');
-
-//console.trace();
+//ES7 - Async / Await
 
 /*
-console.group('My group');
-console.log('Info inside group');
-console.log('More info inside group');
-console.groupEnd ('My froup');
+const asyncTimer = () => 
+new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(12345);
+    }, 1000)
+});
+
+const simpleFunc = async() => {
+
+    const data = await  Promise.all([asyncTimer(), fetch('/data.json').then(resStream =>
+    resStream.json()
+    )])
+
+    return data;
+};
+
+simpleFunc()
+    .then(data => {
+    console.log(data);
+})
+.catch(err => {
+    console.log(err);
+});
+
+
+//------------------------------------//
+
+
+//FETCH
+
+/*fetch('http://localhost:8080/dataXPTO.json', {
+})
+.then(responseStream => {
+    console.log(responseStream);
+    if(responseStream.status === 200) {
+       return responseStream.json();
+    } else {
+        throw new Error('Request error');
+    }
+})
+.then(data => {
+    console.log(data);
+})
+.catch(err => {
+    console.log('Erro: ', err);
+});
+
+
+
+
+//------------------------------------//
+/*fetch('/data.json')
+.then(responseStream => responseStream.json()) 
+.then(data => {
+    console.log(data);
+}) .catch(err => {
+    console.log('Erro: ', err);
+});
 */
 
-console.time('Log time');
-setTimeout(() => {
-    console.timeEnd('Log time');
-}, 2000);
-
-// console.table(['Celso Henrique', 'Digital Innovation One']);
-console.assert(1 === 0, 'Ops'); 
-
-// console.log('%c styled log"), color: blue;');
