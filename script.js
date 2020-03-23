@@ -1,63 +1,35 @@
-//ES7 - Async / Await
+//EventEmitter
 
-/*
-const asyncTimer = () => 
-new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve(12345);
-    }, 1000)
-});
+const EventEmitter = require('events');
 
-const simpleFunc = async() => {
-
-    const data = await  Promise.all([asyncTimer(), fetch('/data.json').then(resStream =>
-    resStream.json()
-    )])
-
-    return data;
-};
-
-simpleFunc()
-    .then(data => {
-    console.log(data);
-})
-.catch(err => {
-    console.log(err);
-});
-
-
-//------------------------------------//
-
-
-//FETCH
-
-/*fetch('http://localhost:8080/dataXPTO.json', {
-})
-.then(responseStream => {
-    console.log(responseStream);
-    if(responseStream.status === 200) {
-       return responseStream.json();
-    } else {
-        throw new Error('Request error');
+class Users extends EventEmitter {
+    userLogged(data){
+        setTimeout(() => {
+            this.emit ('User logged', data);
+        }, 2000);
+       
     }
-})
-.then(data => {
-    console.log(data);
-})
-.catch(err => {
-    console.log('Erro: ', err);
+}
+
+const users = new Users();
+
+emitter.on('User logged', data =>{
+ console.log(data);
 });
 
+Users.userLogged({ user: 'Elaine Souza'});
+Users.userLogged({ user: 'Souza Elaine'});
 
+// EventTarget
 
+const EventEmitter = require('events');
 
-//------------------------------------//
-/*fetch('/data.json')
-.then(responseStream => responseStream.json()) 
-.then(data => {
-    console.log(data);
-}) .catch(err => {
-    console.log('Erro: ', err);
-});
-*/
+class Users extends EventEmitter {
+    userLogged(data){
+        setTimeout(() => {
+            this.emit ('User logged', data);
+        }, 2000);
+       
+    }
+}
 
